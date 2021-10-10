@@ -28,7 +28,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuarios/{idUsuario}")
-    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long idUsuario) {
+    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Integer idUsuario) {
         Optional<Usuario> usuario = usuarioService.listarUsuarioPorId(idUsuario);
         return usuario.map(value -> ResponseEntity.ok().body(value)).orElseGet(() -> ResponseEntity.badRequest().body(null));
     }

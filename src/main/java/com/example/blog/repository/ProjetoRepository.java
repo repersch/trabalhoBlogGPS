@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
+public interface ProjetoRepository extends JpaRepository<Projeto, Integer> {
 
-    List<Projeto> findAllByIdUsuario(Long idUsuario);
+    List<Projeto> findAllByIdUsuario(Integer idUsuario);
 
 
 

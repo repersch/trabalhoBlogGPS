@@ -2,20 +2,27 @@ package com.example.blog.model;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Usuario")
 public class Usuario {
 
     @Id
-    @GeneratedValue
-    private Long idUsuario;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "senha")
     private String senha;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "sobrenome")
     private String sobrenome;
 
 
@@ -61,4 +68,7 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
 }

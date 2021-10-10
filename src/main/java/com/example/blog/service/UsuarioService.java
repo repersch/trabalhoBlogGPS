@@ -28,7 +28,7 @@ public class UsuarioService {
         return repository.findAll();
     }
 
-    public Optional<Usuario> listarUsuarioPorId(Long idUsuario) {
+    public Optional<Usuario> listarUsuarioPorId(Integer idUsuario) {
         return repository.findById(idUsuario);
 
     }

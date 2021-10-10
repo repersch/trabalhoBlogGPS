@@ -1,5 +1,6 @@
 package com.example.blog.service;
 
+import com.example.blog.exceptions.ProjetoNaoCadastradoException;
 import com.example.blog.exceptions.UsuarioNaoCadastradoException;
 import com.example.blog.model.Projeto;
 import com.example.blog.repository.ProjetoRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjetoService {
@@ -25,10 +27,29 @@ public class ProjetoService {
         return projetoRepository.save(projeto);
     }
 
-    public List<Projeto> listarProjetosPorUsuario(Long idUsuario) {
+    public List<Projeto> listarProjetosPorUsuario(Integer idUsuario) {
         if (usuarioRepository.findById(idUsuario).isEmpty()) {
             throw new UsuarioNaoCadastradoException("Não existe usuário cadastrado com esse ID");
         }
         return projetoRepository.findAllByIdUsuario(idUsuario);
+    }
+
+    public Projeto buscarProjetoPorId(Integer idProjeto) {
+        Optional<Projeto> projeto = projetoRepository.findById(idProjeto);
+        if (projeto.isEmpty()) {
+            throw new ProjetoNaoCadastradoException("Não existe projeto cadastrado com esse ID");
+        }
+        return projeto.get();
+    }
+
+    public Projeto modificarNomeProjeto(Integer idProjeto, String nome) {
+        Projeto projeto = buscarProjetoPorId(idProjeto);
+        projeto.setNome(nome);
+        return projetoRepository.save(projeto);
+    }
+
+    public void deletarProjeto(Integer idProjeto) {
+        buscarProjetoPorId(idProjeto);
+        projetoRepository.deleteById(idProjeto);
     }
 }

@@ -1,34 +1,43 @@
 package com.example.blog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "publicacao")
 public class Publicacao {
 
-    @Id @GeneratedValue
-    private Long idPublicacao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_publicacao")
+    private Integer idPublicacao;
 
+    @Column(name = "titulo")
     private String titulo;
+
+    @Column(name = "subtitulo")
     private String subtitulo;
+
+    @Column(name = "conteudo")
     private String conteudo;
+
+    @Column(name = "id_projeto")
+    private Integer idProjeto;
 
     public Publicacao() {
     }
 
-    public Publicacao(Long idPublicacao, String titulo, String subtitulo, String conteudo) {
-        this.idPublicacao = idPublicacao;
+    public Publicacao(String titulo, String subtitulo, String conteudo, Integer idProjeto) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.conteudo = conteudo;
+        this.idProjeto = idProjeto;
     }
 
-    public Long getIdPublicacao() {
+    public Integer getIdPublicacao() {
         return idPublicacao;
     }
 
-    public void setIdPublicacao(Long idPublicacao) {
+    public void setIdPublicacao(Integer idPublicacao) {
         this.idPublicacao = idPublicacao;
     }
 
@@ -54,5 +63,13 @@ public class Publicacao {
 
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
+    }
+
+    public Integer getIdProjeto() {
+        return idProjeto;
+    }
+
+    public void setIdProjeto(Integer idProjeto) {
+        this.idProjeto = idProjeto;
     }
 }

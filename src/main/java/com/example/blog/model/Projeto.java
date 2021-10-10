@@ -1,39 +1,37 @@
 package com.example.blog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "projeto")
 public class Projeto {
 
-    @Id @GeneratedValue
-    private Long idProjeto;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_projeto")
+    private Integer idProjeto;
 
+    @Column(name = "nome")
     private String nome;
-    private Long idUsuario;
 
-    private static List<Publicacao> listaPublicacoes = new ArrayList<>();
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
     public Projeto() {
     }
 
-    public Projeto(String nome, Long idUsuario) {
+    public Projeto(String nome, Integer idUsuario) {
         this.nome = nome;
         this.idUsuario = idUsuario;
     }
 
-    public boolean adicionaPublicacao(Publicacao publicacao) {
-        return listaPublicacoes.add(publicacao);
-    }
-
-    public Long getIdProjeto() {
+    public Integer getIdProjeto() {
         return idProjeto;
     }
 
-    public void setIdProjeto(Long idProjeto) {
+    public void setIdProjeto(Integer idProjeto) {
         this.idProjeto = idProjeto;
     }
 
@@ -45,19 +43,13 @@ public class Projeto {
         this.nome = nome;
     }
 
-    public Long getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public static List<Publicacao> getListaPublicacoes() {
-        return listaPublicacoes;
-    }
 
-    public static void setListaPublicacoes(List<Publicacao> listaPublicacoes) {
-        Projeto.listaPublicacoes = listaPublicacoes;
-    }
 }
