@@ -1,6 +1,5 @@
 package com.example.blog.controller;
 
-import com.example.blog.exceptions.UsuarioNaoCadastradoException;
 import com.example.blog.model.Projeto;
 import com.example.blog.service.ProjetoService;
 import com.example.blog.service.UsuarioService;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PublicacaoRepository extends JpaRepository<Publicacao, Long> {
+public interface PublicacaoRepository extends JpaRepository<Publicacao, Integer> {
 
     List<Publicacao> findAllByIdProjeto(Integer idProjeto);
 }

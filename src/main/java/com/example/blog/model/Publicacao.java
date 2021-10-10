@@ -26,11 +26,10 @@ public class Publicacao {
     public Publicacao() {
     }
 
-    public Publicacao(String titulo, String subtitulo, String conteudo, Integer idProjeto) {
+    public Publicacao(String titulo, String subtitulo, String conteudo) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.conteudo = conteudo;
-        this.idProjeto = idProjeto;
     }
 
     public Integer getIdPublicacao() {
